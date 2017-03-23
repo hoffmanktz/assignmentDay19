@@ -9,3 +9,5 @@
 - The game should tell the user how they won or lost (e.g., display the message "Paper disproves Spock!")
 
 */
+
+var sget = require("sget");
