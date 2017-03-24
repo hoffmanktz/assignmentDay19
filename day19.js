@@ -25,16 +25,17 @@
 var sget = require("sget");
 
 	
-var choices = ["rock", "paper", "scissors"];
+var choices = ["rock", "paper", "scissors", "lizard","spock"];
 var userChoice;
 var compChoice;
+// var compAnswer = [];
 
 
 
 
 var compGuess = function () {
-	var compChoice = choices[Math.floor(Math.random() * choices.length)];
-	if (compChoice == 0) {
+	compChoice = choices[Math.floor(Math.random() * choices.length)];
+	if (compChoice === 0) {
 		compChoice = "rock";
 	} else if (compChoice == 1) {
 		compChoice = "paper";
@@ -51,31 +52,22 @@ var compGuess = function () {
 
 var checkGuess = function() {
     
-    switch (true) { 
-        case userChoice == "rock" && compChoice == "scissors":
-            console.log("rock crushes scissors!");
-            break;
-        case userChoice == "rock" && compChoice == "paper":
-            console.log("paper covers rock!");
-            break;
-        case userChoice == "paper" && compChoice == "rock":
-            console.log("paper covers rock!");
-            break;
-        case userChoice == "paper" && compChoice =="scissors":
-            console.log("Scissors cut paper!");
-            break;
-        case userChoice == "scissors" && compChoice == "rock":
-            console.log("rock crushes scissors!");
-            break;  
-        case userChoice == "scissors" && compChoice == "paper":
-            console.log("Scissors cut paper!");
-            break;
-        case userChoice === compChoice:
-            console.log("its a tie!");
-            break;
-        default:
-            console.log("You failed.");
-	}
+		if (userChoice == compChoice) {
+			console.log("Tie!");
+		} else if (userChoice == "rock" && compChoice == "scissors") {
+			console.log("Rock crushes scissors! You win!");
+		} else if (userChoice == "rock" && compChoice == "paper") {
+			console.log("Paper covers rock! You lose.");
+		} else if (userChoice == "paper" && compChoice == "rock") {
+			console.log("Paper covers rock! You win!");
+		} else if (userChoice == "paper" && compChoice == "scissors") {
+			console.log("Scissors cut paper! You lose.");
+		} else if (userChoice == "scissors" && compChoice == "rock") {
+			console.log("Rock crushes scissors! You lose.");
+		} else if (userChoice == "scissors" && compChoice == "paper") {
+			console.log("Scissors cut paper! You win!");
+		} 
+
 	playAgain();
 };
 
@@ -105,6 +97,8 @@ var mainGame = function () {
 	var userChoice = sget("Do you choose rock, paper, scissors, lizard, or Spock? ");
 	userChoice = userChoice.toLowerCase();
 	compGuess();
+	console.log("You chose " + userChoice);
+	console.log("The computer chose " + compChoice);
 	checkGuess();
 };
 
